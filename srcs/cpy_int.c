@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cpy_int.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 08:41:34 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/14 15:14:33 by estarck          ###   ########.fr       */
+/*   Created: 2022/04/14 14:36:33 by estarck           #+#    #+#             */
+/*   Updated: 2022/04/14 15:14:05 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_ab	*init_ps(int	argc)
+static int	cpy_to_lst(char *str, int j)
 {
-	t_ab	*ab;
-	
-	if (argc == 1)
-		exit (0);
-	ab = malloc(sizeof(t_bool));
-	if (ab == NULL)
-		ft_perror(ab, "Error Malloc - t_ab *ab - init_ps", 1);
-	return (ab);
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while (str[i] != 32)
+	{
+		tmp[i] = str[i];
+		i++;
+	}
+	return (i);
 }
 
-int	main(int argc, char **argv)
+void	cpy_int(t_ab *ab, int argc, char **argv)
 {
-	t_ab	*ab;
-	
-	ab = init_ps(argc);
-	check_param(ab, argc, argv);
-	//je suis en train de code cpy_int
-	ft_printf("Hello World !");
-	return (0);
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (i < argc)
+	{
+		while (argv[i][j] != '\0')
+		{
+			if (argv[i][j] >= 48 && argv[i][j] <= 57)
+				j = j + cpy_to_lst(argv[i]);
+			j++;
+		}
+		i++;
+	}
 }
