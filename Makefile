@@ -8,7 +8,10 @@ LIBFT	=	-L./libft -lft
 SDIR	=	./srcs
 _SRCS	=	main.c \
 			ft_perror.c \
-			check_param.c
+			check_param.c \
+			cpy_int.c \
+			instructions.c \
+			operations.c
 SRCS	=	$(patsubst %,$(SDIR)/%,$(_SRCS))
 
 ODIR	=	./objs

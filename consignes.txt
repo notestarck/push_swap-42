@@ -38,8 +38,4 @@ The last element becomes the first one.
 
 rrr : rra and rrb at the same time.
 
-• Si aucun paramètre n'est spécifié, le programme ne doit rien afficher et donner la
-invite de retour.
-• En cas d'erreur, il doit afficher "Erreur" suivi d'un '\n' sur l'erreur type.
-Les erreurs incluent par exemple : certains arguments ne sont pas des entiers, certains arguments sont
-plus grand qu'un entier et/ou il y a des doublons.
+"Error" followed by a ’\n’ on the standard error.

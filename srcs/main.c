@@ -6,19 +6,40 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 08:41:34 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/14 15:14:33 by estarck          ###   ########.fr       */
+/*   Updated: 2022/04/26 18:24:59 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_ab	*init_ps(int	argc)
+static void test(t_ab *ab) //a Supprimer
+{
+	t_data	*tmp;
+	t_data	*tmp2;
+
+	tmp = ab->a;
+	tmp2 = ab->b;
+	ft_printf("\n");
+	while (tmp != NULL)
+	{
+		ft_printf("pile a : %d\n", tmp->nbr);
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
+	while (tmp2 != NULL)
+	{
+		ft_printf("pile b : %d\n", tmp2->nbr);
+		tmp2 = tmp2->next;
+	}
+}
+
+static t_ab	*init_ps(int argc)
 {
 	t_ab	*ab;
-	
+
 	if (argc == 1)
 		exit (0);
-	ab = malloc(sizeof(t_bool));
+	ab = malloc(sizeof(t_ab));
 	if (ab == NULL)
 		ft_perror(ab, "Error Malloc - t_ab *ab - init_ps", 1);
 	return (ab);
@@ -27,10 +48,10 @@ static t_ab	*init_ps(int	argc)
 int	main(int argc, char **argv)
 {
 	t_ab	*ab;
-	
+
 	ab = init_ps(argc);
 	check_param(ab, argc, argv);
-	//je suis en train de code cpy_int
-	ft_printf("Hello World !");
+	cpy_int(ab, argv);
+	//code rot_element
 	return (0);
 }

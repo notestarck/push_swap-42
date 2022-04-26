@@ -6,41 +6,93 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:36:33 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/14 15:14:05 by estarck          ###   ########.fr       */
+/*   Updated: 2022/04/26 18:16:37 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	cpy_to_lst(char *str, int j)
+static void	int_is_dup(t_ab *ab, int nbr)
 {
-	int		i;
-	char	*tmp;
+	t_data	*tmp;
+
+	tmp = ab->a;
+	while (tmp->next != NULL)
+	{
+		if (tmp->nbr == nbr)
+			ft_perror(ab, "Error", 3);
+		tmp = tmp->next;
+	}
+}
+
+static int	cpy_to_lst(char *str, t_data *a_lst, t_ab *ab)
+{
+	int					i;
+	int					s;
+	unsigned long int	r;
 
 	i = 0;
-	while (str[i] != 32)
+	r = 0;
+	s = 1;
+	if (str[i] == '-')
 	{
-		tmp[i] = str[i];
+		s = -s;
 		i++;
 	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		r = (r * 10) + (str[i] - '0');
+		i++;
+	}
+	if (r > 2147483648 && s < 0)
+		ft_perror(ab, "Error", 3);
+	if (r > 2147483647 && s > 0)
+		ft_perror(ab, "Error", 3);
+	a_lst->nbr = r * s;
 	return (i);
 }
 
-void	cpy_int(t_ab *ab, int argc, char **argv)
+static t_data	*create_lst(t_ab *ab)
 {
-	int	i;
-	int	j;
+	t_data	*a_lst;
+	t_data	*tmp;
 
-	i = 1;
-	j = 0;
-	while (i < argc)
+	tmp = ab->a;
+	a_lst = malloc(sizeof(t_data));
+	if (a_lst == 0x0)
+		ft_perror(ab, "Error - Malloc create_lst", 3); //gerer le free de chaine
+	if (ab->a == NULL)
 	{
-		while (argv[i][j] != '\0')
-		{
-			if (argv[i][j] >= 48 && argv[i][j] <= 57)
-				j = j + cpy_to_lst(argv[i]);
-			j++;
-		}
-		i++;
+		ab->a = a_lst;
+		return (a_lst);
 	}
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = a_lst;
+	return (a_lst);
+}
+
+void	cpy_int(t_ab *ab, char **argv)
+{
+	int		c;
+	t_data	*a_lst;
+
+	c = 0;
+	argv++;
+	while (*argv)
+	{
+		while (**argv)
+		{
+			if ((**argv >= 48 && **argv <= 57) || **argv == 45)
+			{
+				a_lst = create_lst(ab);
+				c = cpy_to_lst(*argv, a_lst, ab);
+				int_is_dup(ab, a_lst->nbr);
+				*argv = *argv + c;
+			}
+			else
+				(*argv)++;
+		}
+		argv++;
+	}	
 }
