@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 08:42:42 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/26 18:25:14 by estarck          ###   ########.fr       */
+/*   Updated: 2022/04/29 09:52:01 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ struct s_data
 
 typedef struct s_ab
 {
-	t_data	*a;
-	t_data	*b;
+	t_data	**a;
+	t_data	**b;
 }	t_ab;
 
 //Gestion des erreurs

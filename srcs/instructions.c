@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:22:23 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/26 18:23:37 by estarck          ###   ########.fr       */
+/*   Updated: 2022/04/29 09:36:17 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static void	mp_rotate(t_ab *ab, t_op op)
 	{
 		rot_element(ab, op);
 		ft_printf("rb\n");
+	}
+	if (op == rr)
+	{
+		rot_element(ab, op);
+		rot_element(ab, op);
+		ft_printf("rr\n");
 	}
 }
 

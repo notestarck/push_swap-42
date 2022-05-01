@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:24:36 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/26 18:24:40 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/01 22:50:35 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,17 @@ int	push_element(t_ab *ab, t_op op)
 
 int	rot_element(t_ab *ab, t_op op)
 {
+	t_data	*tmp;
 
+	if (op == ra)
+	{
+		tmp = ab->a;
+		ab->a = ab->a->next;
+		while (ab->a->next != NULL)
+			ab->a = ab->a->next;
+		ab->a->next = tmp;
+		ab->a = ab->a->next;
+		ab->a->next = NULL;
+	}
+	return (0);
 }

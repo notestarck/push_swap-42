@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 08:41:34 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/26 18:24:59 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/01 22:50:17 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	main(int argc, char **argv)
 	ab = init_ps(argc);
 	check_param(ab, argc, argv);
 	cpy_int(ab, argv);
-	//code rot_element
+	
+	instructions(ab, ra);
+	test(ab);
 	return (0);
 }
