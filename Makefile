@@ -11,7 +11,10 @@ _SRCS	=	main.c \
 			check_param.c \
 			cpy_int.c \
 			instructions.c \
-			operations.c
+			operations.c \
+			algo.c \
+			algo_score.c \
+			sort.c
 SRCS	=	$(patsubst %,$(SDIR)/%,$(_SRCS))
 
 ODIR	=	./objs

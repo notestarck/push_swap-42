@@ -6,17 +6,33 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:36:33 by estarck           #+#    #+#             */
-/*   Updated: 2022/04/26 18:16:37 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/02 14:43:35 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void count_elements(t_ab *ab)
+{
+	int		i;
+	t_data	*tmp;
+
+	i = 0;
+	tmp = (*ab->a);
+	while (tmp != NULL)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	ab->size = i;
+	ft_printf("Nombre d'elements : %d\n\n", ab->size); //a supprimer
+}
+
 static void	int_is_dup(t_ab *ab, int nbr)
 {
 	t_data	*tmp;
 
-	tmp = ab->a;
+	tmp = (*ab->a);
 	while (tmp->next != NULL)
 	{
 		if (tmp->nbr == nbr)
@@ -57,13 +73,13 @@ static t_data	*create_lst(t_ab *ab)
 	t_data	*a_lst;
 	t_data	*tmp;
 
-	tmp = ab->a;
+	tmp = (*ab->a);
 	a_lst = malloc(sizeof(t_data));
 	if (a_lst == 0x0)
 		ft_perror(ab, "Error - Malloc create_lst", 3); //gerer le free de chaine
-	if (ab->a == NULL)
+	if (*ab->a == NULL)
 	{
-		ab->a = a_lst;
+		(*ab->a) = a_lst;
 		return (a_lst);
 	}
 	while (tmp->next != NULL)
@@ -95,4 +111,5 @@ void	cpy_int(t_ab *ab, char **argv)
 		}
 		argv++;
 	}	
+	count_elements(ab);
 }
