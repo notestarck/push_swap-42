@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:48:10 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 20:03:27 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/03 22:31:56 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	check_score(t_ab *ab)
 	while (tmp != NULL)
 	{
 		if (tmp->nbr > ab->med_elem && ab->c_med <= (ab->mid_size)
-			&& ab->c_supmed_b <= (ab->mid_size / 2))
+			&& ab->c_supmed_b <= (ab->mid_size / 3))
 		{
 			instructions(ab, rb);
 			(ab->c_med)++;
@@ -108,7 +108,9 @@ void	start_algo(t_ab *ab)
 		sort_two(ab);
 	if (ab->size_tt == 3)
 		sort_three(ab, ab->a);
-	if (ab->size_tt >= 4)
+	if (ab->size_tt == 5)
+		sort_five(ab);
+	if (ab->size_tt > 5)
 	{
 		push_atob(ab);
 		while (ab->si_st_b)
