@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 08:41:34 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 18:47:53 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/03 19:03:51 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ static t_ab	*init_ps(int argc)
 	ab = malloc(sizeof(t_ab));
 	if (ab == NULL)
 		ft_perror(ab, "Error Malloc - t_ab *ab - init_ps\n", 1);
-	ab->a = malloc(sizeof(t_data)); //Free
-	ab->b = malloc(sizeof(t_data)); //Free
+	ab->a = malloc(sizeof(t_data));
+	if (ab->a == NULL)
+		ft_perror(ab, "Error Mallox - ab->a - init_ps\n", 2);
+	ab->b = malloc(sizeof(t_data));
+	if (ab->b == NULL)
+		ft_perror(ab, "Error Mallox - ab->b - init_ps\n", 3);
 	return (ab);
 }
 

@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:12:40 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 16:12:01 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/03 19:05:12 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	are_int(t_ab *ab, char *argv)
 	while (argv[i] != '\0')
 	{
 		if (argv[i] != 32 && argv[i] != 45 && (argv[i] < 48 || argv[i] > 57))
-			ft_perror(ab, "Error\n", 2);
+			ft_perror(ab, "Error\n", 4);
 		i++;
 	}
 }

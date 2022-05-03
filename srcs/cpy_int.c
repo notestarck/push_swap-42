@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:36:33 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 16:50:23 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/03 19:07:55 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_sort(t_ab *ab)
 		tmp = tmp->next;
 	}
 	if (tmp->next == NULL)
-		ft_perror(ab, "", 3); //a changer
+		ft_perror(ab, "\n", 5);
 	return (0);
 }
 
@@ -38,7 +38,7 @@ static void	int_is_dup(t_ab *ab, int nbr)
 	while (tmp->next != NULL)
 	{
 		if (tmp->nbr == nbr)
-			ft_perror(ab, "Error\n", 3);
+			ft_perror(ab, "Error\n", 5);
 		tmp = tmp->next;
 	}
 }
@@ -63,9 +63,9 @@ static int	cpy_to_lst(char *str, t_data *a_lst, t_ab *ab)
 		i++;
 	}
 	if (r > 2147483648 && s < 0)
-		ft_perror(ab, "Error\n", 3);
+		ft_perror(ab, "Error\n", 5);
 	if (r > 2147483647 && s > 0)
-		ft_perror(ab, "Error\n", 3);
+		ft_perror(ab, "Error\n", 5);
 	a_lst->nbr = r * s;
 	return (i);
 }
@@ -78,7 +78,7 @@ static t_data	*create_lst(t_ab *ab)
 	tmp = (*ab->a);
 	a_lst = malloc(sizeof(t_data));
 	if (a_lst == 0x0)
-		ft_perror(ab, "Error - Malloc create_lst\n", 3); //gerer le free de chaine
+		ft_perror(ab, "Error - Malloc create_lst\n", 5);
 	if (*ab->a == NULL)
 	{
 		(*ab->a) = a_lst;

@@ -13,7 +13,7 @@ _SRCS	=	main.c \
 			instructions.c \
 			operations.c \
 			init_elem.c \
-			algo.c \
+			start_algo.c \
 			algo_score.c \
 			sort.c \
 			close_algo.c

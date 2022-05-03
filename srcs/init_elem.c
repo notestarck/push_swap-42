@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:20:02 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 18:44:06 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/03 18:49:52 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	ft_sort_int_tab(int *tab, int size)
 
 static void	find_element(t_ab *ab)
 {
-	int		tab[10000];
+	int		tab[10001];
 	int		i;
 	t_data	*tmp;
 
