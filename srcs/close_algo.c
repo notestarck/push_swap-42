@@ -1,35 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_param.c                                      :+:      :+:    :+:   */
+/*   close_algo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 11:12:40 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 16:12:01 by estarck          ###   ########.fr       */
+/*   Created: 2022/05/03 18:28:55 by estarck           #+#    #+#             */
+/*   Updated: 2022/05/03 18:37:24 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	are_int(t_ab *ab, char *argv)
+static void	close_algo_n(t_ab *ab, int i)
 {
-	int	i;
-
-	i = 0;
-	while (argv[i] != '\0')
+	if (i < (ab->c_med) && i > 0)
 	{
-		if (argv[i] != 32 && argv[i] != 45 && (argv[i] < 48 || argv[i] > 57))
-			ft_perror(ab, "Error\n", 2);
-		i++;
+		while (i)
+		{
+			instructions(ab, ra);
+			i--;
+		}
+	}
+	else if (i > (ab->mid_size) && i > 0)
+	{
+		i = ab->size_tt - i;
+		while (i)
+		{
+			instructions(ab, rra);
+			i--;
+		}
 	}
 }
 
-void	check_param(t_ab *ab, int argc, char **argv)
+void	close_algo(t_ab *ab)
 {
-	while (argc > 1)
+	int		i;
+	t_data	*tmp;
+
+	i = 0;
+	tmp = (*ab->a);
+	while (tmp != NULL)
 	{
-		are_int(ab, argv[argc - 1]);
-		argc--;
+		if (tmp->nbr == ab->min_elem)
+			break ;
+		i++;
+		tmp = tmp->next;
 	}
+	close_algo_n(ab, i);
 }

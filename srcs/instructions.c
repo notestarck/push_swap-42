@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:22:23 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/02 12:25:12 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/03 13:21:52 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ void	instructions(t_ab *ab, t_op op)
 		mp_push(ab, op);
 	if (op >= ra && op <= rr)
 		mp_rotate(ab, op);
-	if (op >= rra && op <= rrb)
+	if (op >= rra && op <= rrr)
 		mp_reverse(ab, op);
 }

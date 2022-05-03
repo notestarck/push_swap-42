@@ -6,26 +6,28 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:36:33 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/02 14:43:35 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/03 16:50:23 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void count_elements(t_ab *ab)
+static int	is_sort(t_ab *ab)
 {
-	int		i;
+	int		nbr;
 	t_data	*tmp;
 
-	i = 0;
 	tmp = (*ab->a);
-	while (tmp != NULL)
+	while (tmp->next != NULL)
 	{
+		nbr = tmp->nbr;
+		if (nbr > tmp->next->nbr)
+			break ;
 		tmp = tmp->next;
-		i++;
 	}
-	ab->size = i;
-	ft_printf("Nombre d'elements : %d\n\n", ab->size); //a supprimer
+	if (tmp->next == NULL)
+		ft_perror(ab, "", 3); //a changer
+	return (0);
 }
 
 static void	int_is_dup(t_ab *ab, int nbr)
@@ -36,7 +38,7 @@ static void	int_is_dup(t_ab *ab, int nbr)
 	while (tmp->next != NULL)
 	{
 		if (tmp->nbr == nbr)
-			ft_perror(ab, "Error", 3);
+			ft_perror(ab, "Error\n", 3);
 		tmp = tmp->next;
 	}
 }
@@ -61,9 +63,9 @@ static int	cpy_to_lst(char *str, t_data *a_lst, t_ab *ab)
 		i++;
 	}
 	if (r > 2147483648 && s < 0)
-		ft_perror(ab, "Error", 3);
+		ft_perror(ab, "Error\n", 3);
 	if (r > 2147483647 && s > 0)
-		ft_perror(ab, "Error", 3);
+		ft_perror(ab, "Error\n", 3);
 	a_lst->nbr = r * s;
 	return (i);
 }
@@ -76,7 +78,7 @@ static t_data	*create_lst(t_ab *ab)
 	tmp = (*ab->a);
 	a_lst = malloc(sizeof(t_data));
 	if (a_lst == 0x0)
-		ft_perror(ab, "Error - Malloc create_lst", 3); //gerer le free de chaine
+		ft_perror(ab, "Error - Malloc create_lst\n", 3); //gerer le free de chaine
 	if (*ab->a == NULL)
 	{
 		(*ab->a) = a_lst;
@@ -111,5 +113,6 @@ void	cpy_int(t_ab *ab, char **argv)
 		}
 		argv++;
 	}	
-	count_elements(ab);
+	is_sort(ab);
+	init_elements(ab);
 }
