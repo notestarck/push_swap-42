@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:10:37 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 22:38:25 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:46:51 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ void	sort_five(t_ab *ab)
 {
 	instructions(ab, pb);
 	instructions(ab, pb);
+	ab->si_st_a = 3;
+	ab->si_st_b = 2;
 	sort_three(ab, ab->a);
-
+	while (ab->si_st_b)
+	{
+		score_elem_b(ab);
+		check_score(ab);
+	}
+	close_algo(ab);
 }

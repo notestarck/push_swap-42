@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:48:10 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 22:31:56 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:52:12 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	push_btoa(t_ab *ab, t_data *elem)
 	push_btoa_n(ab, elem);
 }
 
-static void	check_score(t_ab *ab)
+void	check_score(t_ab *ab)
 {
 	t_data	*tmp;
 
@@ -64,7 +64,7 @@ static void	check_score(t_ab *ab)
 	while (tmp != NULL)
 	{
 		if (tmp->nbr > ab->med_elem && ab->c_med <= (ab->mid_size)
-			&& ab->c_supmed_b <= (ab->mid_size / 3))
+			&& ab->c_supmed_b <= (ab->mid_size / 2))
 		{
 			instructions(ab, rb);
 			(ab->c_med)++;

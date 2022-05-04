@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 08:41:34 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 22:14:06 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:53:36 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	main(int argc, char **argv)
 	ab = init_ps(argc);
 	check_param(ab, argc, argv);
 	cpy_int(ab, argv);
+	init_elements(ab);
 	start_algo(ab);
+	ft_perror(ab, NULL, 4);
 	return (0);
 }
