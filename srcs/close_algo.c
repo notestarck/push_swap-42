@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:28:55 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 18:37:24 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/04 14:17:35 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	close_algo_n(t_ab *ab, int i)
 {
-	if (i < (ab->c_med) && i > 0)
+	if (i < (ab->mid_size) && i > 0)
 	{
 		while (i)
 		{

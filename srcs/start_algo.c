@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:48:10 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/04 11:52:12 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/04 15:44:31 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,7 @@ void	check_score(t_ab *ab)
 	tmp = (*ab->b);
 	while (tmp != NULL)
 	{
-		if (tmp->nbr > ab->med_elem && ab->c_med <= (ab->mid_size)
-			&& ab->c_supmed_b <= (ab->mid_size / 2))
-		{
-			instructions(ab, rb);
-			(ab->c_med)++;
-			break ;
-		}
-		if (ab->bst_elem == tmp->score)
+		if (ab->bst_elem == tmp->nbr)
 		{
 			push_btoa(ab, tmp);
 			break ;
@@ -108,6 +101,8 @@ void	start_algo(t_ab *ab)
 		sort_two(ab);
 	if (ab->size_tt == 3)
 		sort_three(ab, ab->a);
+	if (ab->size_tt == 4)
+		sort_four(ab);
 	if (ab->size_tt == 5)
 		sort_five(ab);
 	if (ab->size_tt > 5)

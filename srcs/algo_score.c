@@ -6,13 +6,13 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:52:15 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/03 19:52:45 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/04 15:47:25 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	final_score(t_ab *ab, t_data *tmp)
+static void	final_score(t_data *tmp)
 {
 	tmp->score = 0;
 	if (tmp->ra <= tmp->rra)
@@ -35,8 +35,6 @@ static void	final_score(t_ab *ab, t_data *tmp)
 		tmp->score = tmp->rrb + tmp->score;
 		tmp->rb = 0;
 	}
-	if (tmp->score < (ab->bst_elem))
-		ab->bst_elem = tmp->score;
 }
 
 static int	score_compare_a(t_ab *ab, t_data *b)
@@ -48,7 +46,8 @@ static int	score_compare_a(t_ab *ab, t_data *b)
 	tmp = (*ab->a);
 	while (tmp != 0)
 	{
-		if (tmp->next != NULL && (b->nbr > tmp->nbr && b->nbr < tmp->next->nbr))
+		if (tmp->next != NULL && ((b->nbr > tmp->nbr && b->nbr < tmp->next->nbr)
+				|| (((*ab->a)->nbr == ab->max_elem) && b->nbr == ab->min_elem)))
 		{
 			b->ra = i;
 			b->rra = ab->si_st_a - i;
@@ -67,14 +66,19 @@ void	score_elem_b(t_ab *ab)
 
 	i = 0;
 	tmp = (*ab->b);
-	ab->bst_elem = ab->size_tt;
+	ab->bst_elem_score = ab->size_tt;
 	while (tmp != NULL)
 	{
 		tmp->rb = i;
 		if (i != 0)
 			tmp->rrb = ab->si_st_b - i;
 		score_compare_a(ab, tmp);
-		final_score(ab, tmp);
+		final_score(tmp);
+		if (tmp->score < (ab->bst_elem_score))
+		{
+			ab->bst_elem_score = tmp->score;
+			ab->bst_elem = tmp->nbr;
+		}
 		tmp = tmp->next;
 		i++;
 	}
