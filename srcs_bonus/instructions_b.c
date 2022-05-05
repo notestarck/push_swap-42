@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction.c                                      :+:      :+:    :+:   */
+/*   instructions_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:22:23 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/05 17:29:31 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/05 20:03:16 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,75 +14,54 @@
 
 static void	mp_reverse(t_ab *ab, t_op op)
 {
-	if (op == rra)
-	{
+	if (op == rra && ab->si_st_a > 1)
 		rev_element(ab->a);
-		ft_printf("rra\n");
-	}
-	if (op == rrb)
-	{
+	if (op == rrb && ab->si_st_b > 1)
 		rev_element(ab->b);
-		ft_printf("rrb\n");
-	}
 	if (op == rrr)
 	{
-		rev_element(ab->a);
-		rev_element(ab->b);
-		ft_printf("rrr\n");
+		if (ab->si_st_a > 1)
+			rev_element(ab->a);
+		if (ab->si_st_b > 1)
+			rev_element(ab->b);
 	}
 }
 
 static void	mp_rotate(t_ab *ab, t_op op)
 {
-	if (op == ra)
-	{
+	if (op == ra && ab->si_st_a > 1)
 		rot_element(ab->a);
-		ft_printf("ra\n");
-	}
-	if (op == rb)
-	{
+	if (op == rb && ab->si_st_b > 1)
 		rot_element(ab->b);
-		ft_printf("rb\n");
-	}
 	if (op == rr)
 	{
-		rot_element(ab->a);
-		rot_element(ab->b);
-		ft_printf("rr\n");
+		if (ab->si_st_a > 1)
+			rot_element(ab->a);
+		if (ab->si_st_b > 1)
+			rot_element(ab->b);
 	}
 }
 
 static void	mp_push(t_ab *ab, t_op op)
 {
-	if (op == pa)
-	{
+	if (op == pa && ab->si_st_b > 0)
 		push_element(ab, op);
-		ft_printf("pa\n");
-	}
-	if (op == pb)
-	{
+	if (op == pb && ab->si_st_a > 0)
 		push_element(ab, op);
-		ft_printf("pb\n");
-	}
 }
 
 static void	mp_swap(t_ab *ab, t_op op)
 {
 	if (op == sa)
-	{
 		swap_elements(*ab->a);
-		ft_printf("sa\n");
-	}
 	if (op == sb)
-	{
 		swap_elements(*ab->b);
-		ft_printf("sb\n");
-	}
 	if (op == ss)
 	{
-		swap_elements(*ab->a);
-		swap_elements(*ab->b);
-		ft_printf("ss\n");
+		if (ab->si_st_a > 1)
+			swap_elements(*ab->a);
+		if (ab->si_st_b > 1)
+			swap_elements(*ab->b);
 	}
 }
 

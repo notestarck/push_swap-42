@@ -1,4 +1,5 @@
 NAME	=	push_swap
+NAME_B	=	checker
 
 INCLUDES =	-I./includes \
 			-I./libft/includes
@@ -6,7 +7,7 @@ INCLUDES =	-I./includes \
 LIBFT	=	-L./libft -lft
 
 SDIR	=	./srcs
-_SRCS	=	main.c \
+_SRCS	=	push_swap.c \
 			ft_perror.c \
 			check_param.c \
 			cpy_int.c \
@@ -19,9 +20,23 @@ _SRCS	=	main.c \
 			close_algo.c
 SRCS	=	$(patsubst %,$(SDIR)/%,$(_SRCS))
 
+SDIR_B	=	./srcs_bonus
+_SRCS_B	=	checker.c \
+			ft_perror.c \
+			check_param.c \
+			cpy_int.c \
+			read_stdin.c \
+			instructions_b.c \
+			operations.c
+SRCS_B	=	$(patsubst %,$(SDIR_B)/%,$(_SRCS_B))
+
 ODIR	=	./objs
 _OBJS	=	${_SRCS:.c=.o}
 OBJS	=	$(patsubst %,$(ODIR)/%,$(_OBJS))
+
+ODIR_B	=	./objs_b
+_OBJS_B	=	${_SRCS_B:.c=.o}
+OBJS_B	=	$(patsubst %,$(ODIR_B)/%,$(_OBJS_B))
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -51,21 +66,33 @@ $(NAME)	:	$(OBJS)
 			@make -C ./libft
 			@echo "$(_RED)Compilation push_swap en cours...$(_END)"
 			@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(OBJS) -o $(NAME)
-			@echo "$(_GREEN)$(_BOLD)Fin de la compilation$(_END)"
+			@echo "$(_GREEN)$(_BOLD)Fin de la compilation push_swap$(_END)"
 
 $(ODIR)/%.o: $(SDIR)/%.c
+			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+bonus	:	$(OBJS_B)
+			@echo "$(_RED)Compilation libft.a en cours...$(_END)"
+			@make -C ./libft
+			@echo "$(_RED)Compilation checker en cours...$(_END)"
+			@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(OBJS_B) -o $(NAME_B)
+			@echo "$(_GREEN)$(_BOLD)Fin de la compilation bonus$(_END)"
+
+$(ODIR_B)/%.o: $(SDIR_B)/%.c
 			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean	:
 			@echo "$(_BLUE)Clean des .o$(_END)"
 			@make -C ./libft clean
 			@$(RM) $(OBJS)
+			@$(RM) $(OBJS_B)
 
 fclean	:	clean
 			@echo "$(_BLUE)Clean des executables$(_END)"
 			@$(RM) ./libft/libft.a
 			@$(RM) $(NAME)
+			@$(RM) $(NAME_B)
 
-re		:	fclean all
+re		:	fclean all bonus
 
 .PHONY	:	all clean fclean re

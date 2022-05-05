@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 08:41:34 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/05 09:10:34 by estarck          ###   ########.fr       */
+/*   Created: 2022/05/05 14:52:40 by estarck           #+#    #+#             */
+/*   Updated: 2022/05/05 17:21:02 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ int	main(int argc, char **argv)
 	t_ab	*ab;
 
 	if (argc == 1)
-		return (0);
+		exit (0);
 	ab = init_ps(argc);
 	check_param(ab, argc, argv);
 	cpy_int(ab, argv);
-	init_elements(ab);
-	start_algo(ab);
+	read_stdin(ab);
 	ft_perror(ab, NULL, 4);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 08:42:42 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/05 14:42:38 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/05 16:25:06 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
 # include "libft.h"
 
 typedef enum e_bool
@@ -92,5 +93,8 @@ void	sort_four(t_ab *ab);
 void	sort_five(t_ab *ab);
 void	check_score(t_ab *ab);
 void	close_algo(t_ab *ab);
+
+//Checker
+void	read_stdin(t_ab *ab);
 
 #endif
