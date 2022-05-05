@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 08:42:42 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/04 15:13:13 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/05 14:42:38 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_ab
 	int		si_st_a;
 	int		si_st_b;
 	int		c_med;
-	int		c_supmed_b;
 	int		mid_size;
 	int		min_elem;
 	int		med_elem;
@@ -88,7 +87,7 @@ void	init_elements(t_ab *ab);
 void	start_algo(t_ab *ab);
 void	score_elem_b(t_ab *ab);
 void	sort_two(t_ab *ab);
-void	sort_three(t_ab *ab, t_data **s);
+void	sort_three(t_ab *ab);
 void	sort_four(t_ab *ab);
 void	sort_five(t_ab *ab);
 void	check_score(t_ab *ab);

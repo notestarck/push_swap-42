@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:48:10 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/04 15:44:31 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/05 14:42:42 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ static void	push_atob(t_ab *ab)
 			continue ;
 		}
 		instructions(ab, pb);
-		if (i > ab->mid_size && ab->med_elem < (*ab->b)->nbr)
-			(ab->c_supmed_b)++;
+		if ((*ab->b)->nbr > ab->med_elem)
+			instructions(ab, rb);
 		i++;
 	}
 	ab->si_st_a = 3;
 	ab->si_st_b = i;
-	sort_three(ab, ab->a);
+	sort_three(ab);
 }
 
 void	start_algo(t_ab *ab)
@@ -100,7 +100,7 @@ void	start_algo(t_ab *ab)
 	if (ab->size_tt == 2)
 		sort_two(ab);
 	if (ab->size_tt == 3)
-		sort_three(ab, ab->a);
+		sort_three(ab);
 	if (ab->size_tt == 4)
 		sort_four(ab);
 	if (ab->size_tt == 5)

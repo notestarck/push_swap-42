@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:52:15 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/04 16:01:13 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/05 14:19:44 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ static int	score_compare_a(t_ab *ab, t_data *b)
 	while (tmp != 0)
 	{
 		if (tmp->next != NULL && ((b->nbr > tmp->nbr && b->nbr < tmp->next->nbr)
-				|| (((*ab->a)->nbr == ab->max_elem) && b->nbr == ab->min_elem)
-				|| ((b->nbr == ab->max_elem) && tmp->next->nbr == ab->min_elem)))
+				|| ((tmp->nbr == ab->max_elem) && b->nbr == ab->min_elem)
+				|| ((b->nbr == ab->max_elem)
+					&& tmp->next->nbr == ab->min_elem)))
 		{
 			b->ra = i;
 			b->rra = ab->si_st_a - i;

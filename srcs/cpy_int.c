@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:36:33 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/04 11:29:35 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/05 09:15:53 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_sort(t_ab *ab)
 		tmp = tmp->next;
 	}
 	if (tmp->next == NULL)
-		ft_perror(ab, "\n", 4);
+		ft_perror(ab, NULL, 4);
 	return (0);
 }
 
@@ -52,6 +52,8 @@ static int	cpy_to_lst(char *str, t_data *a_lst, t_ab *ab)
 	i = 0;
 	r = 0;
 	s = 1;
+	if (str[i] == 45 && (str[i + 1] < 48 || str[i + 1] > 57))
+		ft_perror(ab, "Error\n", 4);
 	if (str[i] == '-')
 	{
 		s = -s;
