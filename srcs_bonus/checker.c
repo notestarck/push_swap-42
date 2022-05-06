@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:52:40 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/05 17:21:02 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/06 07:13:49 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	main(int argc, char **argv)
 	ab = init_ps(argc);
 	check_param(ab, argc, argv);
 	cpy_int(ab, argv);
+	if (ab->size_tt == 1)
+		ft_perror(NULL, "Error\n", 0);
 	read_stdin(ab);
 	ft_perror(ab, NULL, 4);
 	return (0);

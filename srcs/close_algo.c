@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:28:55 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/05 14:08:44 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/06 07:16:52 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	close_algo(t_ab *ab)
 		i++;
 		tmp = tmp->next;
 	}
-	//ft_printf("i : %d mid_size : %d\n ", i, ab->mid_size);
 	close_algo_n(ab, i);
 }

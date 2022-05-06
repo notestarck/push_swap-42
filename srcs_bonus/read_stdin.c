@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:05:31 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/05 20:04:02 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/06 07:34:07 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_sort(t_ab *ab)
 {
-	t_data *tmp;
+	t_data	*tmp;
 
 	tmp = (*ab->a);
 	while (tmp != NULL)
@@ -29,27 +29,10 @@ static void	check_sort(t_ab *ab)
 		ft_printf("KO\n");
 }
 
-static void	push_instruction(t_ab *ab, char *str)
+static void	push_instruction_n(t_ab *ab, char *str)
 {
-	if (*str == 's' && *(str + 2) == '\n' && (*(str + 1) == 'a' || *(str + 1) == 'b' || *(str + 1) == 's'))
-	{
-		str++;
-		if (*str == 'a')
-			instructions(ab, sa);
-		if (*str == 'b')
-			instructions(ab, sb);
-		if (*str == 's')
-			instructions(ab, ss);
-	}
-	else if (*str == 'p' && *(str + 2) == '\n' && (*(str + 1) == 'a' || *(str + 1) == 'b'))
-	{
-		str++;
-		if (*str == 'a')
-			instructions(ab, pa);
-		if (*str == 'b')
-			instructions(ab, pb);
-	}
-	else if (*str == 'r' && *(str + 2) == '\n' && (*(str + 1) == 'a' || *(str + 1) == 'b' || *(str + 1) == 'r'))
+	if (*str == 'r' && *(str + 2) == '\n' && (*(str + 1) == 'a'
+			|| *(str + 1) == 'b' || *(str + 1) == 'r'))
 	{
 		str++;
 		if (*str == 'a')
@@ -59,7 +42,8 @@ static void	push_instruction(t_ab *ab, char *str)
 		if (*str == 'r')
 			instructions(ab, rr);
 	}
-	else if (*str == 'r' && *(str + 3) == '\n' && *(str + 1) == 'r' && (*(str + 2) == 'a' || *(str + 2) == 'b' || *(str + 2) == 'r'))
+	else if (*str == 'r' && *(str + 3) == '\n' && *(str + 1) == 'r'
+		&& (*(str + 2) == 'a' || *(str + 2) == 'b' || *(str + 2) == 'r'))
 	{
 		str += 2;
 		if (*str == 'a')
@@ -73,6 +57,32 @@ static void	push_instruction(t_ab *ab, char *str)
 		ft_perror(ab, "Error\n", 42);
 }
 
+static void	push_instruction(t_ab *ab, char *str)
+{
+	if (*str == 's' && *(str + 2) == '\n' && (*(str + 1) == 'a'
+			|| *(str + 1) == 'b' || *(str + 1) == 's'))
+	{
+		str++;
+		if (*str == 'a')
+			instructions(ab, sa);
+		if (*str == 'b')
+			instructions(ab, sb);
+		if (*str == 's')
+			instructions(ab, ss);
+	}
+	else if (*str == 'p' && *(str + 2) == '\n'
+		&& (*(str + 1) == 'a' || *(str + 1) == 'b'))
+	{
+		str++;
+		if (*str == 'a')
+			instructions(ab, pa);
+		if (*str == 'b')
+			instructions(ab, pb);
+	}
+	else
+		push_instruction_n(ab, str);
+}
+
 void	read_stdin(t_ab *ab)
 {
 	char	*buf;
@@ -80,7 +90,7 @@ void	read_stdin(t_ab *ab)
 	char	*dst;
 
 	buf = malloc(sizeof(char));
-	while (read(1, buf, 5))
+	while (read(1, buf, 42))
 	{
 		tmp = malloc(sizeof(char));
 		dst = malloc(sizeof(char));

@@ -72,8 +72,6 @@ $(ODIR)/%.o: $(SDIR)/%.c
 			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 bonus	:	$(OBJS_B)
-			@echo "$(_RED)Compilation libft.a en cours...$(_END)"
-			@make -C ./libft
 			@echo "$(_RED)Compilation checker en cours...$(_END)"
 			@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(OBJS_B) -o $(NAME_B)
 			@echo "$(_GREEN)$(_BOLD)Fin de la compilation bonus$(_END)"

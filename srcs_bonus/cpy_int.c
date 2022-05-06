@@ -6,7 +6,7 @@
 /*   By: estarck <estarck@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:36:33 by estarck           #+#    #+#             */
-/*   Updated: 2022/05/05 19:54:16 by estarck          ###   ########.fr       */
+/*   Updated: 2022/05/06 07:13:45 by estarck          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,5 @@ void	cpy_int(t_ab *ab, char **argv)
 		}
 		argv++;
 	}	
-	if (ab->size_tt == 1)
-		ft_perror(NULL, "Error\n", 0);
 	is_sort(ab);
 }
